@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bravorik — Tech & AI Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --yellow: #FFD600;
+    --pink: #FF3CAC;
+    --cyan: #00F0FF;
+    --dark: #0A0A0F;
+    --card: #13131A;
+    --text: #F0F0F0;
+    --muted: #888;
+  }
+  body { background: var(--dark); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; border-bottom: 1px solid #1e1e2e; position: sticky; top: 0; background: rgba(10,10,15,0.92); backdrop-filter: blur(10px); z-index: 100; }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; background: linear-gradient(90deg, var(--yellow), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--yellow); }
+
+  /* HERO */
+  .hero { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem 2rem 2rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,60,172,0.15) 0%, transparent 70%); top: -100px; right: -100px; pointer-events: none; }
+  .hero::after { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,240,255,0.1) 0%, transparent 70%); bottom: 0; left: -50px; pointer-events: none; }
+  .hero-tag { display: inline-block; background: rgba(255,214,0,0.12); border: 1px solid rgba(255,214,0,0.3); color: var(--yellow); font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; width: fit-content; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 800; line-height: 1.05; margin-bottom: 1.5rem; }
+  .hero h1 .name { background: linear-gradient(135deg, var(--yellow) 0%, var(--pink) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: linear-gradient(135deg, var(--yellow), var(--pink)); color: #0A0A0F; font-weight: 700; font-family: 'Syne', sans-serif; padding: 0.85rem 2rem; border-radius: 100px; border: none; cursor: pointer; font-size: 0.95rem; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,60,172,0.35); }
+  .btn-outline { background: transparent; color: var(--text); font-weight: 500; padding: 0.85rem 2rem; border-radius: 100px; border: 1px solid #2a2a3a; cursor: pointer; font-size: 0.95rem; transition: border-color 0.2s; text-decoration: none; display: inline-block; }
+  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* SECTIONS */
+  section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1rem; display: block; }
+  h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .about-card { background: var(--card); border: 1px solid #1e1e2e; border-radius: 16px; padding: 1.5rem; transition: border-color 0.2s; }
+  .about-card:hover { border-color: rgba(255,214,0,0.3); }
+  .about-card .icon { font-size: 1.8rem; margin-bottom: 0.75rem; display: block; }
+  .about-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+  .about-card p { font-size: 0.88rem; color: var(--muted); }
+
+  /* PLATFORMS */
+  .platforms-section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+  .platform-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .platform-card { border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.2s; text-decoration: none; display: block; }
+  .platform-card:hover { transform: translateY(-4px); }
+  .platform-card.yt { background: linear-gradient(135deg, #1a0000, #3d0000); border: 1px solid rgba(255,0,0,0.2); }
+  .platform-card.ig { background: linear-gradient(135deg, #1a0014, #2d0033); border: 1px solid rgba(255,60,172,0.2); }
+  .platform-card .pname { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 0.3rem; }
+  .platform-card.yt .pname { color: #ff4444; }
+  .platform-card.ig .pname { color: var(--pink); }
+  .platform-card .psub { font-size: 0.85rem; color: var(--muted); }
+  .platform-card .parrow { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.2rem; opacity: 0.5; color: var(--text); }
+  .platform-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+
+  /* CONTACT */
+  .contact-section { padding: 5rem 2rem 6rem; max-width: 700px; margin: 0 auto; text-align: center; }
+  .contact-box { background: var(--card); border: 1px solid #1e1e2e; border-radius: 24px; padding: 3rem 2.5rem; margin-top: 2rem; }
+  .contact-box p { color: var(--muted); margin-bottom: 2rem; font-size: 1rem; }
+  .contact-email { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,214,0,0.08); border: 1px solid rgba(255,214,0,0.25); color: var(--yellow); padding: 0.9rem 2rem; border-radius: 100px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+  .contact-email:hover { background: rgba(255,214,0,0.15); }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 2rem; border-top: 1px solid #1e1e2e; color: var(--muted); font-size: 0.82rem; }
+  footer span { color: var(--pink); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 10px; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .about-grid, .platform-cards { grid-template-columns: 1fr; }
+    .hero { padding: 2rem 1.25rem; }
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">BRAVORIK.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#platforms">Content</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">✦ Tech & AI Creator</div>
+  <h1>Hey, I'm <span class="name">Bravorik.</span><br>Making AI Simple<br>for Everyone.</h1>
+  <p>Class 12 student, content creator, and AI enthusiast from India. I break down complex tech and AI into content that actually makes sense — for students, by a student.</p>
+  <div class="hero-btns">
+    <a href="https://www.youtube.com/@Bravorik" target="_blank" class="btn-primary">Watch on YouTube</a>
+    <a href="#contact" class="btn-outline">Let's Connect</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">✦ About Me</span>
+  <h2>The brain behind<br>the content.</h2>
+  <p style="color: var(--muted); max-width: 560px;">I'm a Class 12 PCMCS student with a deep passion for Artificial Intelligence and Technology. I create content that makes these subjects approachable, exciting, and fun for everyone.</p>
+  <div class="about-grid">
+    <div class="about-card">
+      <span class="icon">🤖</span>
+      <h3>Tech & AI</h3>
+      <p>Breaking down the latest in AI and technology in simple, relatable language.</p>
+    </div>
+    <div class="about-card">
+      <span class="icon">📚</span>
+      <h3>Education</h3>
+      <p>Study tips, exam prep and learning hacks for fellow Class 12 students.</p>
+    </div>
+    <div class="about-card">
+      <span class="icon">🎯</span>
+      <h3>Student Perspective</h3>
+      <p>Real talk from a real student navigating tech, studies and content creation together.</p>
+    </div>
+    <div class="about-card">
+      <span class="icon">🚀</span>
+      <h3>Future Builder</h3>
+      <p>Learning every day, building skills for a career in the AI industry.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<div class="platforms-section" id="platforms">
+  <span class="section-label">✦ Find Me On</span>
+  <h2>Watch. Follow.<br>Stay updated.</h2>
+  <div class="platform-cards">
+    <a href="https://www.youtube.com/@Bravorik" target="_blank" class="platform-card yt">
+      <span class="platform-icon">▶</span>
+      <div class="pname">YouTube</div>
+      <div class="psub">@Bravorik — Tech & AI videos</div>
+      <span class="parrow">↗</span>
+    </a>
+    <a href="https://www.instagram.com/Bravorik" target="_blank" class="platform-card ig">
+      <span class="platform-icon">◈</span>
+      <div class="pname">Instagram</div>
+      <div class="psub">@Bravorik — Reels & updates</div>
+      <span class="parrow">↗</span>
+    </a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <span class="section-label">✦ Contact</span>
+  <h2>Want to collaborate<br>or just say hi?</h2>
+  <div class="contact-box">
+    <p>Whether you're a fellow creator, a brand, or just a student who wants to connect — my inbox is always open for collaborations, sponsorships and conversations!</p>
+    <a href="mailto:bravorik.business@gmail.com" class="contact-email">📩 &nbsp;bravorik.business@gmail.com</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Made with <span>♥</span> by Bravorik &nbsp;·&nbsp; © 2026
+</footer>
+
+</body>
+</html>
