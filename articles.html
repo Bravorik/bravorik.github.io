@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Articles — Bravorik</title>
+<meta name="description" content="Simple, student-friendly articles about AI, technology and digital trends — by Bravorik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── PAGE HERO ── */
+.page-hero{
+  padding:9rem 0 4rem;position:relative;overflow:hidden;
+}
+.page-hero-glow{
+  position:absolute;top:0;right:-100px;
+  width:600px;height:500px;
+  background:radial-gradient(ellipse at top right,rgba(139,92,246,0.2) 0%,transparent 65%);
+  pointer-events:none;
+}
+.page-hero h1{font-size:clamp(2.5rem,7vw,5.5rem);margin:0.8rem 0 1.2rem;}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#C4B5FD,#8B5CF6,#22D3EE);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.page-hero p{color:var(--muted);font-size:0.97rem;max-width:500px;line-height:1.85;margin-bottom:2rem;font-weight:300;}
+
+/* ── FILTER PILLS ── */
+.filter-row{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:0;}
+.filter-pill{
+  background:rgba(139,92,246,0.06);border:1px solid var(--border);
+  color:var(--dim);font-size:0.75rem;padding:0.38rem 1rem;border-radius:100px;
+  cursor:pointer;transition:all 0.2s;font-family:var(--f-mono);letter-spacing:0.06em;
+}
+.filter-pill:hover{border-color:var(--v1);color:var(--v3);}
+.filter-pill.active{
+  background:rgba(139,92,246,0.15);border-color:var(--v1);color:var(--v3);
+  box-shadow:0 0 12px rgba(139,92,246,0.2);
+}
+
+/* ── FEATURED ── */
+.featured-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);border-radius:28px;padding:2.8rem;
+  position:relative;overflow:hidden;
+  transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;
+}
+.featured-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.07) 0%,transparent 50%);
+  pointer-events:none;
+}
+.featured-card:hover{transform:translateY(-3px);border-color:rgba(139,92,246,0.45);box-shadow:0 16px 50px rgba(139,92,246,0.2);}
+.featured-badge{
+  position:absolute;top:1.8rem;right:1.8rem;
+  font-family:var(--f-mono);font-size:0.62rem;letter-spacing:0.2em;
+  background:linear-gradient(135deg,var(--v1),var(--cyan));color:#fff;
+  padding:0.22rem 0.75rem;border-radius:100px;
+}
+.featured-card h2{
+  font-size:clamp(1.5rem,3vw,2.2rem);margin:1rem 0;line-height:1.2;
+}
+.featured-card p{color:var(--muted);font-size:0.93rem;line-height:1.85;max-width:680px;margin-bottom:1.8rem;font-weight:300;}
+.article-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.meta-dot{width:3px;height:3px;border-radius:50%;background:var(--dim);}
+.meta-item{font-size:0.78rem;color:var(--dim);font-family:var(--f-mono);}
+.read-btn{
+  margin-left:auto;
+  font-family:var(--f-head);font-size:0.82rem;letter-spacing:1.5px;
+  background:linear-gradient(135deg,var(--v1),#6D28D9);
+  color:#fff;padding:0.65rem 1.6rem;border-radius:100px;
+  transition:all 0.25s;
+  box-shadow:0 0 20px rgba(139,92,246,0.35);
+}
+.read-btn:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(139,92,246,0.55);}
+
+/* ── ARTICLE GRID ── */
+.articles-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.3rem;margin-top:1.5rem;
+}
+.article-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(16px);border-radius:22px;padding:1.8rem;
+  display:block;position:relative;overflow:hidden;
+  transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;
+}
+.article-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,transparent 55%);
+  pointer-events:none;border-radius:inherit;
+}
+.article-card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,0.4);box-shadow:0 12px 36px rgba(139,92,246,0.15);}
+.article-card h3{
+  font-family:var(--f-head);font-size:1.05rem;letter-spacing:0.5px;
+  margin:0.8rem 0 0.6rem;line-height:1.3;color:var(--text);
+}
+.article-card p{color:var(--muted);font-size:0.83rem;line-height:1.7;margin-bottom:1.4rem;font-weight:300;}
+.card-footer{display:flex;align-items:center;gap:0.7rem;}
+.card-arrow{
+  margin-left:auto;
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.9rem;color:var(--v3);
+  transition:all 0.2s;
+}
+.article-card:hover .card-arrow{background:rgba(139,92,246,0.25);border-color:var(--v1);}
+
+/* ── COMING SOON CARD ── */
+.coming-card{
+  background:rgba(139,92,246,0.04);
+  border:1px dashed rgba(139,92,246,0.25);
+  border-radius:22px;padding:2.5rem;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;
+}
+.coming-card h3{font-family:var(--f-head);font-size:1.3rem;letter-spacing:1px;color:var(--v3);}
+.coming-card p{color:var(--dim);font-size:0.84rem;max-width:200px;line-height:1.6;}
+
+@media(max-width:768px){
+  .page-hero{padding:7rem 0 3rem;}
+  .read-btn{margin-left:0;margin-top:1rem;}
+  .article-meta{flex-direction:row;}
+  .articles-grid{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .featured-card{padding:1.8rem 1.4rem;}
+}
+</style>
+</head>
+<body>
+<div class="orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+<div class="side-menu" id="sideMenu">
+  <button class="side-close" onclick="closeMenu()">✕</button>
+  <a href="index.html" onclick="closeMenu()"><span class="menu-icon">🏠</span>Home</a>
+  <a href="articles.html" class="active" onclick="closeMenu()"><span class="menu-icon">📝</span>Articles</a>
+  <a href="about.html" onclick="closeMenu()"><span class="menu-icon">👤</span>About</a>
+  <a href="privacy.html" onclick="closeMenu()"><span class="menu-icon">🔒</span>Privacy</a>
+</div>
+
+<div class="page">
+<nav class="nav">
+  <a href="index.html" class="nav-logo">BRAVORIK</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="articles.html" class="active">Articles</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="container">
+    <div class="label fade-up">Learn Something New</div>
+    <h1 class="fade-up">AI &amp; Tech <span>Articles</span></h1>
+    <p class="fade-up">Simple, student-friendly articles about Artificial Intelligence, emerging tech and digital trends — posted regularly by the Bravorik team.</p>
+    <div class="filter-row fade-up" id="filterRow">
+      <button class="filter-pill active" data-cat="all">All</button>
+      <button class="filter-pill" data-cat="Artificial Intelligence">Artificial Intelligence</button>
+      <button class="filter-pill" data-cat="Technology">Technology</button>
+      <button class="filter-pill" data-cat="AI Tools">AI Tools</button>
+      <button class="filter-pill" data-cat="Trends">Trends</button>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FEATURED -->
+<section class="section" style="padding-bottom:2rem;">
+  <div class="container">
+    <div class="featured-card fade-up" data-cat="Artificial Intelligence">
+      <div class="featured-badge">FEATURED</div>
+      <span class="tag">Artificial Intelligence</span>
+      <h2>What is AI and why every student should understand it in 2025</h2>
+      <p>Artificial Intelligence is no longer just a buzzword — it is reshaping every industry, every career and every classroom. We break down what AI actually is, how it works, and why understanding it is the most important skill you can develop as a student right now.</p>
+      <div class="article-meta">
+        <span class="meta-item">April 2026</span>
+        <span class="meta-dot"></span>
+        <span class="meta-item">5 min read</span>
+        <span class="meta-dot"></span>
+        <span class="meta-item">Soumodeep Patra</span>
+        <a href="#" class="read-btn">Read Article</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES GRID -->
+<section class="section" style="padding-top:1rem;">
+  <div class="container">
+    <div class="label fade-up">Latest Articles</div>
+    <div class="articles-grid" id="articleGrid" style="margin-top:1.5rem;">
+
+      <a href="#" class="article-card fade-up" data-cat="AI Tools">
+        <span class="tag">AI Tools</span>
+        <h3>Top 5 free AI tools every student should use in 2026</h3>
+        <p>From writing assistants to image generators — these free tools will supercharge your productivity and learning.</p>
+        <div class="card-footer">
+          <span class="meta-item">March 2026</span>
+          <span class="meta-dot"></span>
+          <span class="meta-item">4 min</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </a>
+
+      <a href="#" class="article-card fade-up" data-cat="Technology">
+        <span class="tag">Technology</span>
+        <h3>How does ChatGPT actually work? A simple explanation</h3>
+        <p>Everyone uses ChatGPT but very few understand what happens behind the scenes. Let us break it down simply.</p>
+        <div class="card-footer">
+          <span class="meta-item">March 2026</span>
+          <span class="meta-dot"></span>
+          <span class="meta-item">6 min</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </a>
+
+      <a href="#" class="article-card fade-up" data-cat="Trends">
+        <span class="tag">Trends</span>
+        <h3>AI trends to watch in 2026 — what is coming next?</h3>
+        <p>The AI industry moves fast. Here are the biggest trends shaping technology in 2026 that every learner should know.</p>
+        <div class="card-footer">
+          <span class="meta-item">April 2026</span>
+          <span class="meta-dot"></span>
+          <span class="meta-item">5 min</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </a>
+
+      <a href="#" class="article-card fade-up" data-cat="Artificial Intelligence">
+        <span class="tag">Artificial Intelligence</span>
+        <h3>Machine Learning vs Deep Learning — what is the difference?</h3>
+        <p>These two terms are often confused. We explain both in the simplest way possible with real world examples.</p>
+        <div class="card-footer">
+          <span class="meta-item">February 2026</span>
+          <span class="meta-dot"></span>
+          <span class="meta-item">4 min</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </a>
+
+      <a href="#" class="article-card fade-up" data-cat="AI Tools">
+        <span class="tag">AI Tools</span>
+        <h3>How to use AI to study smarter — a student's guide</h3>
+        <p>AI can be your best study buddy if you know how to use it right. A practical guide for Class 10, 11 and 12 students.</p>
+        <div class="card-footer">
+          <span class="meta-item">January 2026</span>
+          <span class="meta-dot"></span>
+          <span class="meta-item">7 min</span>
+          <div class="card-arrow">↗</div>
+        </div>
+      </a>
+
+      <div class="coming-card fade-up">
+        <span style="font-size:2rem;">✦</span>
+        <h3>More coming soon</h3>
+        <p>New articles posted regularly. Follow on YouTube and Instagram.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <p class="footer-copy">Made with ✦ by <span>BRAVORIK TEAM</span> &nbsp;·&nbsp; 2026</p>
+</footer>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>{el.classList.add('in');obs.observe(el);});
+
+// Filter
+document.getElementById('filterRow').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-pill');
+  if(!btn)return;
+  document.querySelectorAll('.filter-pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const cat=btn.dataset.cat;
+  document.querySelectorAll('#articleGrid .article-card').forEach(card=>{
+    card.style.display=(cat==='all'||card.dataset.cat===cat)?'':'none';
+  });
+});
+
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('sideMenu').classList.toggle('open');document.getElementById('sideOverlay').classList.toggle('open');document.body.style.overflow=document.getElementById('sideMenu').classList.contains('open')?'hidden':'';}
+function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>

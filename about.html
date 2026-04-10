@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Bravorik</title>
+<meta name="description" content="The story behind Bravorik — founded by Soumodeep Patra, a Class 12 student making AI simple for everyone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── PAGE HERO ── */
+.page-hero{
+  padding:9rem 0 5rem;text-align:center;position:relative;overflow:hidden;
+}
+.page-hero-glow{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse at top,rgba(139,92,246,0.25) 0%,transparent 70%);
+  pointer-events:none;
+}
+.page-hero h1{
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  margin:0.8rem 0 1.2rem;
+}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#C4B5FD,#8B5CF6,#22D3EE);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.page-hero p{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto;line-height:1.85;font-weight:300;}
+
+/* ── FOUNDER CARD ── */
+.founder-card{
+  display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start;
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);border-radius:28px;padding:2.8rem;
+  position:relative;overflow:hidden;
+}
+.founder-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,transparent 55%);
+  pointer-events:none;
+}
+.founder-avatar{
+  position:relative;width:140px;height:140px;flex-shrink:0;
+}
+.avatar-glow{
+  position:absolute;inset:-4px;border-radius:22px;
+  background:linear-gradient(135deg,var(--v1),var(--cyan));
+  opacity:0.7;animation:glow-pulse 3s ease-in-out infinite;
+}
+@keyframes glow-pulse{0%,100%{opacity:0.45;}50%{opacity:0.9;}}
+.avatar-img{
+  position:relative;z-index:1;width:140px;height:140px;border-radius:20px;
+  object-fit:cover;object-position:top center;
+  animation:float-avatar 5s ease-in-out infinite;
+  background:var(--surface2);display:flex;align-items:center;justify-content:center;
+  font-size:3rem;
+}
+@keyframes float-avatar{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.avatar-placeholder{
+  position:relative;z-index:1;width:140px;height:140px;border-radius:20px;
+  background:var(--surface2);display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;animation:float-avatar 5s ease-in-out infinite;
+}
+.founder-name{font-family:var(--f-head);font-size:2rem;letter-spacing:1px;margin-bottom:0.2rem;}
+.founder-role{
+  font-size:0.7rem;letter-spacing:0.18em;font-family:var(--f-mono);
+  color:var(--v2);text-transform:uppercase;margin-bottom:1.2rem;
+}
+.founder-bio{color:var(--muted);font-size:0.92rem;line-height:1.85;margin-bottom:1.4rem;font-weight:300;}
+.badges{display:flex;gap:0.5rem;flex-wrap:wrap;}
+
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:2rem;margin:2rem 0;}
+.timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,var(--v1),var(--cyan),transparent);
+}
+.tl-item{position:relative;margin-bottom:2.2rem;padding-left:1.8rem;}
+.tl-dot{
+  position:absolute;left:-2.38rem;top:4px;
+  width:12px;height:12px;border-radius:50%;
+  background:linear-gradient(135deg,var(--v1),var(--cyan));
+  border:2px solid var(--ink);
+  box-shadow:0 0 12px var(--glow);
+}
+.tl-year{
+  font-family:var(--f-mono);font-size:0.75rem;
+  background:linear-gradient(90deg,var(--v2),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:0.1em;margin-bottom:0.3rem;
+}
+.tl-item h3{font-family:var(--f-head);font-size:1rem;letter-spacing:0.5px;color:var(--text);margin-bottom:0.3rem;}
+.tl-item p{color:var(--muted);font-size:0.86rem;line-height:1.7;font-weight:300;}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:2rem;}
+.stat-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(16px);border-radius:18px;padding:1.5rem;text-align:center;
+  position:relative;overflow:hidden;
+  transition:transform 0.25s,border-color 0.25s,box-shadow 0.25s;
+}
+.stat-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,transparent 60%);
+  pointer-events:none;
+}
+.stat-card:hover{transform:translateY(-5px);border-color:rgba(139,92,246,0.45);box-shadow:0 12px 36px rgba(139,92,246,0.2);}
+.stat-num{
+  font-family:var(--f-head);font-size:2.2rem;letter-spacing:1px;
+  background:linear-gradient(135deg,var(--v2),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;margin-bottom:0.3rem;
+}
+.stat-label{font-size:0.78rem;color:var(--dim);}
+
+/* ── THANKS CARD ── */
+.thanks-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(20px);border-radius:24px;padding:2.5rem;
+  text-align:center;position:relative;overflow:hidden;
+}
+.thanks-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,transparent 50%);
+  pointer-events:none;
+}
+.thanks-card p{color:var(--muted);font-size:0.93rem;line-height:1.85;font-weight:300;}
+.thanks-card p + p{margin-top:0.8rem;}
+.thanks-highlight{
+  background:linear-gradient(90deg,var(--v2),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-weight:500;
+}
+
+@media(max-width:768px){
+  .founder-card{grid-template-columns:1fr;text-align:center;gap:1.5rem;}
+  .founder-avatar,.avatar-placeholder{margin:0 auto;}
+  .badges{justify-content:center;}
+  .page-hero{padding:7rem 0 3rem;}
+}
+</style>
+</head>
+<body>
+<div class="orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+<div class="side-menu" id="sideMenu">
+  <button class="side-close" onclick="closeMenu()">✕</button>
+  <a href="index.html" onclick="closeMenu()"><span class="menu-icon">🏠</span>Home</a>
+  <a href="articles.html" onclick="closeMenu()"><span class="menu-icon">📝</span>Articles</a>
+  <a href="about.html" class="active" onclick="closeMenu()"><span class="menu-icon">👤</span>About</a>
+  <a href="privacy.html" onclick="closeMenu()"><span class="menu-icon">🔒</span>Privacy</a>
+</div>
+
+<div class="page">
+<nav class="nav">
+  <a href="index.html" class="nav-logo">BRAVORIK</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="label fade-up">Our Story</div>
+  <h1 class="fade-up">The story behind<br><span>Bravorik</span></h1>
+  <p class="fade-up">A mission to make Artificial Intelligence and Technology simple, exciting and accessible for every student and learner out there.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- FOUNDER -->
+<section class="section">
+  <div class="container">
+    <div class="founder-card fade-up">
+      <div class="founder-avatar">
+        <div class="avatar-glow"></div>
+        <div class="avatar-placeholder">
+          <img src="avatar.png" alt="Soumodeep Patra" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;position:absolute;inset:0;" onerror="this.style.display='none'">
+          🧑‍💻
+        </div>
+      </div>
+      <div class="founder-info">
+        <div class="founder-name">Soumodeep Patra</div>
+        <div class="founder-role">Founder &amp; Creator — Bravorik</div>
+        <p class="founder-bio">Soumodeep Patra is a passionate tech content creator and digital storyteller with over 7 years of experience in the technology and videography industry. What started as a curiosity for cameras and computers evolved into a full-fledged mission — making complex technology understandable for everyone. Soumodeep founded Bravorik in 2025 with one simple goal: bridge the gap between cutting-edge AI and everyday learners.</p>
+        <div class="badges">
+          <span class="tag">7+ Years Experience</span>
+          <span class="tag">Tech Creator</span>
+          <span class="tag">AI Enthusiast</span>
+          <span class="tag">Videographer</span>
+          <span class="tag">Founded 2025</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STORY + TIMELINE -->
+<section class="section">
+  <div class="container">
+    <div class="label fade-up">The Journey</div>
+    <h2 class="fade-up" style="font-size:clamp(1.8rem,4vw,3rem);margin:0.8rem 0 1.5rem;">How Bravorik began</h2>
+    <div class="fade-up" style="color:var(--muted);font-size:0.95rem;line-height:1.9;max-width:680px;font-weight:300;">
+      <p style="margin-bottom:1rem;">It all started with a simple frustration — every time Soumodeep searched for AI and tech content, the explanations were either too complicated for beginners or too shallow to actually learn from. There was a massive gap between what experts were saying and what everyday students needed.</p>
+      <p style="margin-bottom:1rem;">With 7 years of hands-on experience in technology and videography, Soumodeep decided it was time to build something different. Something that speaks the language of students — not professors. And so, in 2025, Bravorik was born.</p>
+      <p>The name Bravorik represents boldness, creativity and the relentless pursuit of knowledge. It is not just a brand — it is a movement for the next generation of tech-savvy creators, students and dreamers.</p>
+    </div>
+
+    <div style="margin-top:3.5rem;">
+      <div class="label fade-up">Timeline</div>
+      <h2 class="fade-up" style="font-size:clamp(1.8rem,4vw,3rem);margin:0.8rem 0 2rem;">Our milestones</h2>
+      <div class="timeline">
+        <div class="tl-item fade-up">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2018</div>
+          <h3>The beginning</h3>
+          <p>Soumodeep starts his journey in technology and videography — learning cameras, editing and the world of digital content creation.</p>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2021</div>
+          <h3>Deep dive into AI</h3>
+          <p>The AI revolution begins. Soumodeep starts studying Machine Learning, AI tools and their real-world applications with growing passion.</p>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2024</div>
+          <h3>The idea sparks</h3>
+          <p>After years of learning, the gap becomes clear — students need better, simpler AI content. The idea of Bravorik takes shape.</p>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2025</div>
+          <h3>Bravorik is born</h3>
+          <p>Bravorik officially launches on YouTube and Instagram with a mission to make AI simple for every student and learner in India and beyond.</p>
+        </div>
+        <div class="tl-item fade-up">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2026</div>
+          <h3>Growing strong</h3>
+          <p>Bravorik expands — articles, Discord community, and a fully rebuilt website. The mission is bigger than ever.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card fade-up"><span class="stat-num">7+</span><div class="stat-label">Years in Tech &amp; Video</div></div>
+      <div class="stat-card fade-up"><span class="stat-num">2025</span><div class="stat-label">Year Founded</div></div>
+      <div class="stat-card fade-up"><span class="stat-num">3</span><div class="stat-label">Platforms &amp; Growing</div></div>
+      <div class="stat-card fade-up"><span class="stat-num">∞</span><div class="stat-label">Passion for AI</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- THANKS -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="label fade-up" style="display:block;text-align:center;">Special Thanks</div>
+    <h2 class="fade-up" style="font-size:clamp(1.8rem,4vw,3rem);margin:0.8rem 0 2rem;text-align:center;">Those who made this possible</h2>
+    <div class="thanks-card fade-up">
+      <p style="font-size:1.05rem;color:var(--text);margin-bottom:1rem;">Bravorik would not exist without the support of some incredible tools and people.</p>
+      <p>A very special thank you to <span class="thanks-highlight">Claude by Anthropic</span> — our AI partner that helped design, build and bring this website to life from the very first line of code to the final pixel. Claude has been the silent co-founder behind the scenes of Bravorik. This website is living proof of what humans and AI can build together.</p>
+      <p>Thank you to every student, viewer and supporter who believes in the Bravorik mission. You are the reason we create.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+  <p class="footer-copy">Made with ✦ by <span>BRAVORIK TEAM</span> &nbsp;·&nbsp; 2026</p>
+</footer>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>{el.classList.add('in');obs.observe(el);});
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('sideMenu').classList.toggle('open');document.getElementById('sideOverlay').classList.toggle('open');document.body.style.overflow=document.getElementById('sideMenu').classList.contains('open')?'hidden':'';}
+function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>

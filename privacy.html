@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Bravorik</title>
+<meta name="description" content="Bravorik's Privacy Policy — transparent, clear and simple.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero{
+  padding:9rem 0 4rem;position:relative;overflow:hidden;
+}
+.page-hero-glow{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:500px;height:400px;
+  background:radial-gradient(ellipse at top,rgba(139,92,246,0.2) 0%,transparent 70%);
+  pointer-events:none;
+}
+.page-hero h1{font-size:clamp(2.5rem,7vw,5rem);margin:0.8rem 0 1rem;}
+.page-hero h1 span{
+  background:linear-gradient(135deg,#C4B5FD,#8B5CF6,#22D3EE);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.page-hero .updated{font-size:0.8rem;color:var(--dim);font-family:var(--f-mono);}
+
+.notice-card{
+  background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.25);
+  border-radius:16px;padding:1.2rem 1.5rem;margin:2rem 0;
+}
+.notice-card p{color:var(--v3);font-size:0.9rem;line-height:1.75;margin:0;}
+
+.policy-wrap{max-width:760px;margin:0 auto;padding-bottom:6rem;}
+
+.policy-block{
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:blur(16px);border-radius:20px;padding:2rem 2.2rem;
+  margin-bottom:1.2rem;position:relative;overflow:hidden;
+  transition:border-color 0.25s;
+}
+.policy-block::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,transparent 55%);
+  pointer-events:none;
+}
+.policy-block:hover{border-color:rgba(139,92,246,0.35);}
+.block-num{
+  font-family:var(--f-mono);font-size:0.65rem;color:var(--v1);
+  letter-spacing:0.15em;margin-bottom:0.5rem;opacity:0.7;
+}
+.policy-block h2{
+  font-size:1.1rem;letter-spacing:0.5px;margin-bottom:1rem;
+  background:linear-gradient(90deg,var(--v3),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.policy-block p{color:var(--muted);font-size:0.88rem;line-height:1.85;margin-bottom:0.7rem;font-weight:300;}
+.policy-block p:last-child{margin-bottom:0;}
+.policy-block ul{
+  color:var(--muted);font-size:0.88rem;line-height:1.85;
+  padding-left:1.3rem;margin-bottom:0.7rem;font-weight:300;
+}
+.policy-block ul li{margin-bottom:0.35rem;}
+.policy-block ul li::marker{color:var(--v1);}
+
+.contact-highlight{
+  background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);
+  border-radius:12px;padding:1rem 1.3rem;margin-top:0.8rem;
+}
+.contact-highlight p{margin:0!important;color:var(--v3)!important;font-family:var(--f-mono);font-size:0.86rem!important;}
+
+@media(max-width:768px){
+  .page-hero{padding:7rem 0 3rem;}
+  .policy-block{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+<div class="side-menu" id="sideMenu">
+  <button class="side-close" onclick="closeMenu()">✕</button>
+  <a href="index.html" onclick="closeMenu()"><span class="menu-icon">🏠</span>Home</a>
+  <a href="articles.html" onclick="closeMenu()"><span class="menu-icon">📝</span>Articles</a>
+  <a href="about.html" onclick="closeMenu()"><span class="menu-icon">👤</span>About</a>
+  <a href="privacy.html" class="active" onclick="closeMenu()"><span class="menu-icon">🔒</span>Privacy</a>
+</div>
+
+<div class="page">
+<nav class="nav">
+  <a href="index.html" class="nav-logo">BRAVORIK</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="privacy.html" class="active">Privacy</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-glow"></div>
+  <div class="container">
+    <div class="label fade-up">Legal</div>
+    <h1 class="fade-up">Privacy <span>Policy</span></h1>
+    <p class="updated fade-up">Last updated: April 2026 — Effective immediately</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section class="section" style="padding-top:3rem;">
+  <div class="container">
+    <div class="policy-wrap">
+
+      <div class="notice-card fade-up">
+        <p>Bravorik is committed to protecting your privacy. This policy explains clearly what data we collect, how we use it and your rights as a visitor. We believe in full transparency.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 01</div>
+        <h2>Who we are</h2>
+        <p>Bravorik is a Tech and AI content platform founded by Soumodeep Patra in 2025. Our website is located at bravorik.github.io and our contact email is bravorik.business@gmail.com.</p>
+        <p>We create educational content about Artificial Intelligence, Technology and related topics for students and learners worldwide.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 02</div>
+        <h2>What information we collect</h2>
+        <p>We collect minimal information to improve your experience on our website. This may include:</p>
+        <ul>
+          <li>Basic analytics data — pages visited, time spent, device type and country via Google Analytics</li>
+          <li>Email address — only if you contact us directly via email</li>
+          <li>Comments — if you post a comment on our articles when the login system is active</li>
+          <li>Username and password — only if you create an account, stored encrypted and secure</li>
+        </ul>
+        <p>We do not collect sensitive personal information like financial data, government IDs or medical information.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 03</div>
+        <h2>How we use your information</h2>
+        <p>Any information collected is used only for the following purposes:</p>
+        <ul>
+          <li>To understand how visitors use our website and improve our content</li>
+          <li>To respond to your messages or collaboration requests</li>
+          <li>To manage your account and comments on our platform</li>
+          <li>To send updates about new articles or content — only if you opt in</li>
+        </ul>
+        <p>We will never sell, rent or share your personal data with third parties for commercial purposes.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 04</div>
+        <h2>Cookies</h2>
+        <p>Our website uses cookies — small text files stored on your device — to improve your browsing experience. These include:</p>
+        <ul>
+          <li>Analytics cookies — from Google Analytics to track page views and traffic</li>
+          <li>Session cookies — to keep you logged in if you have an account</li>
+        </ul>
+        <p>You can disable cookies at any time through your browser settings. Note that some features may not work correctly if cookies are disabled.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 05</div>
+        <h2>Third party services</h2>
+        <p>Bravorik uses the following third party services which have their own privacy policies:</p>
+        <ul>
+          <li>Google Analytics — for website traffic analysis</li>
+          <li>YouTube — for embedded video content</li>
+          <li>Instagram — for social media links</li>
+          <li>GitHub Pages — for website hosting</li>
+        </ul>
+        <p>We encourage you to review the privacy policies of these services separately.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 06</div>
+        <h2>Your rights</h2>
+        <p>As a visitor or user of Bravorik, you have the following rights:</p>
+        <ul>
+          <li>The right to know what personal data we hold about you</li>
+          <li>The right to request deletion of your data at any time</li>
+          <li>The right to opt out of analytics tracking</li>
+          <li>The right to update or correct your account information</li>
+        </ul>
+        <p>To exercise any of these rights, email us and we will respond within 7 working days.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 07</div>
+        <h2>Children's privacy</h2>
+        <p>Bravorik's content is designed for students and learners of all ages. However, we do not knowingly collect personal information from children under the age of 13 without parental consent. If you believe your child has provided us with personal information, please contact us immediately.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 08</div>
+        <h2>Changes to this policy</h2>
+        <p>We may update this Privacy Policy from time to time as our platform grows. Any changes will be reflected on this page with an updated date at the top. We encourage you to check this page periodically.</p>
+      </div>
+
+      <div class="policy-block fade-up">
+        <div class="block-num">// 09</div>
+        <h2>Contact us</h2>
+        <p>If you have any questions, concerns or requests regarding this Privacy Policy or your data, please reach out to us:</p>
+        <div class="contact-highlight">
+          <p>bravorik.business@gmail.com</p>
+        </div>
+        <p style="margin-top:0.8rem;">We are committed to responding to all privacy related queries within 7 working days.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="articles.html">Articles</a>
+  </div>
+  <p class="footer-copy">Made with ✦ by <span>BRAVORIK TEAM</span> &nbsp;·&nbsp; 2026</p>
+</footer>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('in');});},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>{el.classList.add('in');obs.observe(el);});
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('sideMenu').classList.toggle('open');document.getElementById('sideOverlay').classList.toggle('open');document.body.style.overflow=document.getElementById('sideMenu').classList.contains('open')?'hidden':'';}
+function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>
